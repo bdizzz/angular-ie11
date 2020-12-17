@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import cssVars from 'css-vars-ponyfill';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,15 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
-    document.documentElement.style.setProperty('--the-test', '#FF0000');
+
+    cssVars({
+      onlyLegacy: false,
+      variables: {
+        '--the-test': 'red'
+      },
+      watch: true,
+      onComplete: (a, b, variables) => {}
+    });
+
   }
 }
