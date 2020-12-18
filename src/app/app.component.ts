@@ -11,13 +11,16 @@ export class AppComponent implements OnInit {
   public ngOnInit(): void {
 
     cssVars({
-      onlyLegacy: false,
+      onlyLegacy: true,
       variables: {
         '--the-test': 'red'
       },
-      watch: true,
-      onComplete: (a, b, variables) => {}
+      watch: true
     });
 
+  }
+
+  public blue(): void {
+    document.documentElement.style.setProperty('--the-test', 'blue');
   }
 }
